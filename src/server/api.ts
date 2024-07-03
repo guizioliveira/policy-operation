@@ -22,7 +22,7 @@ export interface ApoliceProps {
 export function createMockServer() {
   createServer({
     models: {
-      apolice: Model.extend<Partial<ApoliceProps>>({}),
+      apolice: Model,
     },
 
     seeds(server) {
@@ -105,6 +105,55 @@ export function createMockServer() {
       this.get('/apolice/:id', (schema, request) => {
         const id = request.params.id
         return schema.find('apolice', id)
+      })
+
+      this.post('/apolice', (schema, request) => {
+        const id = String(new Date().getTime())
+        const attrs = JSON.parse(request.requestBody)
+        const newApolice = {
+          id,
+          numero: attrs.apoliceNumber,
+          valor_premio: attrs.awardValue,
+          segurado: {
+            nome: attrs.name,
+            email: attrs.email,
+            cpf_cnpj: attrs.cpfCnpj,
+          },
+          coberturas: [
+            {
+              nome: 'Incêndio',
+              valor: 14.0,
+            },
+          ],
+        }
+        return schema.create('apolice', newApolice)
+      })
+
+      this.put('/apolice/:id', (schema: any, request) => {
+        const id = request.params.id
+        const attrs = JSON.parse(request.requestBody)
+        const apolice = schema.find('apolice', id)!
+        const updated = {
+          numero: attrs.apoliceNumber,
+          valor_premio: attrs.awardValue,
+          segurado: {
+            nome: attrs.name,
+            email: attrs.email,
+            cpf_cnpj: attrs.cpfCnpj,
+          },
+          coberturas: [
+            {
+              nome: 'Incêndio',
+              valor: 14.0,
+            },
+          ],
+        }
+        return apolice.update(updated)
+      })
+
+      this.delete('/apolice/:id', (schema: any, request) => {
+        const id = request.params.id
+        return schema.find('apolice', id)?.destroy()
       })
     },
   })
