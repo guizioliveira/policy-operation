@@ -90,7 +90,7 @@ export default function Form({ apolice, handleSave }: FormProps) {
           <Input
             label="Valor do prémio"
             id="awardValue"
-            type="text"
+            type="number"
             placeholder="R$ 0,00"
             formRegister="awardValue"
             error={errors.awardValue?.message}
