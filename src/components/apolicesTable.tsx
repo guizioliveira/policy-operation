@@ -40,7 +40,10 @@ export function ApolicesTable({
                 {apolice.segurado.nome}
               </td>
               <td className="bg-zinc-100 border-t-2 border-white p-4 leading-relaxed w-1/12">
-                {apolice.valor_premio}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }).format(apolice.valor_premio)}
               </td>
               <td className="bg-zinc-100 border-t-2 border-white p-4 leading-relaxed">
                 {apolice.coberturas.map((cobertura, index) => (

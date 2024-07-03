@@ -5,6 +5,7 @@ import { Button } from './button'
 import Input from './input'
 import { ApoliceProps } from '../server/api'
 import { useNavigate } from 'react-router-dom'
+import { formatCpfCnpj } from '../utils/formatters'
 
 const apoliceFormSchema = zod.object({
   apoliceNumber: zod
@@ -89,7 +90,7 @@ export default function Form({ apolice, handleSave }: FormProps) {
           <Input
             label="Valor do prémio"
             id="awardValue"
-            type="number"
+            type="text"
             placeholder="R$ 0,00"
             formRegister="awardValue"
             error={errors.awardValue?.message}
@@ -125,6 +126,10 @@ export default function Form({ apolice, handleSave }: FormProps) {
             placeholder="E-mail do segurado"
             formRegister="cpfCnpj"
             error={errors.cpfCnpj?.message}
+            onChange={(e) => {
+              const { value } = e.target
+              e.target.value = formatCpfCnpj(value)
+            }}
           />
         </div>
       </FormProvider>
