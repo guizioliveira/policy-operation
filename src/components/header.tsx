@@ -1,13 +1,18 @@
 import { Github } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export function Header() {
+  const navigate = useNavigate()
   return (
     <div className="w-full border-b-gray-200 border-b px-4 md:px-0">
       <div className="container mx-auto h-20 flex justify-between items-center">
         <div className="flex gap-1 items-end">
-          <h1 className="text-brand-300 font-exo font-bold italic text-2xl md:text-4xl leading-tight">
+          <button
+            onClick={() => navigate('/')}
+            className="text-brand-300 font-exo font-bold italic text-2xl md:text-4xl leading-tight"
+          >
             Sicredi
-          </h1>
+          </button>
           <span className="text-brand-400 font-exo italic text-sm md:text-base">
             Operações de apólices
           </span>
