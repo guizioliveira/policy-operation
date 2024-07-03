@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import { ComponentProps } from 'react'
 import { useFormContext } from 'react-hook-form'
 
 interface InputProps extends ComponentProps<'input'> {
