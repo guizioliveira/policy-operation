@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import { ApoliceProps } from '../server/api'
 import { Button } from './button'
 import { Edit3, Trash2 } from 'lucide-react'
