@@ -1,5 +1,5 @@
 import { createServer, Model, Response } from 'miragejs'
-
+import { seeds } from './seeds'
 interface Segurado {
   nome: string
   email: string
@@ -26,54 +26,22 @@ export function createMockServer() {
     },
 
     seeds(server) {
-      server.create('apolice', {
-        id: '1',
-        numero: 125456,
-        valor_premio: 100.0,
-        segurado: {
-          nome: 'Rita de Cassia da Silva',
-          email: 'ritadecassia@email.com',
-          cpf_cnpj: '123.456.789-00',
-        },
-        coberturas: [
-          {
-            nome: 'Incêndio',
-            valor: 14.0,
+      seeds.map((item) =>
+        server.create('apolice', {
+          id: item.id,
+          numero: item.numero,
+          valor_premio: item.valor_premio,
+          segurado: {
+            nome: item.segurado.nome,
+            email: item.segurado.email,
+            cpf_cnpj: item.segurado.cpf_cnpj,
           },
-        ],
-      })
-      server.create('apolice', {
-        id: '2',
-        numero: 125456,
-        valor_premio: 100.0,
-        segurado: {
-          nome: 'Rita de Cassia da Silva',
-          email: 'ritadecassia@email.com',
-          cpf_cnpj: '123.456.789-00',
-        },
-        coberturas: [
-          {
-            nome: 'Incêndio',
-            valor: 14.0,
-          },
-        ],
-      })
-      server.create('apolice', {
-        id: '3',
-        numero: 125456,
-        valor_premio: 100.0,
-        segurado: {
-          nome: 'Rita de Cassia da Silva',
-          email: 'ritadecassia@email.com',
-          cpf_cnpj: '123.456.789-00',
-        },
-        coberturas: [
-          {
-            nome: 'Incêndio',
-            valor: 14.0,
-          },
-        ],
-      })
+          coberturas: item.coberturas.map((cobertura) => ({
+            nome: cobertura.nome,
+            valor: cobertura.valor,
+          })),
+        }),
+      )
     },
 
     routes() {
