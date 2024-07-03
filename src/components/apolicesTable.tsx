@@ -47,7 +47,12 @@ export function ApolicesTable({
               </td>
               <td className="bg-zinc-100 border-t-2 border-white p-4 leading-relaxed">
                 {apolice.coberturas.map((cobertura, index) => (
-                  <span key={index}>{cobertura.nome}</span>
+                  <span
+                    key={index}
+                    className="bg-zinc-200 px-4 py-1 rounded-full"
+                  >
+                    {cobertura.nome}
+                  </span>
                 ))}
               </td>
               <td className="bg-zinc-100 border-t-2 border-white p-4 leading-relaxed pr-6">
