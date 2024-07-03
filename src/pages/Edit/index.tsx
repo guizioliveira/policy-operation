@@ -37,16 +37,16 @@ export function EditApolice() {
   return (
     <>
       {apolice ? (
-        <div className="container mx-auto px-0 md:px-6">
+        <div className="container mx-auto px-6">
           <div className="py-10">
-            <h2 className="text-4xl font-exo font-bold text-brand-500 italic inline mr-6">
+            <h2 className="text-3xl md:text-4xl font-exo font-bold text-brand-500 italic inline mr-4 md:mr-6">
               {apolice.numero}
             </h2>
-            <span className="text-zinc-700 font-exo italic text-3xl">
+            <span className="text-zinc-700 font-exo italic text-xl md:text-3xl">
               {apolice.segurado.nome}
             </span>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <Form apolice={apolice} handleSave={handleEdit} />
           </div>
         </div>

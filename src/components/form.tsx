@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { Button } from './button'
 import Input from './input'
 import { ApoliceProps } from '../server/api'
+import { useNavigate } from 'react-router-dom'
 
 const apoliceFormSchema = zod.object({
   apoliceNumber: zod
@@ -46,6 +47,7 @@ interface FormProps {
 }
 
 export default function Form({ apolice, handleSave }: FormProps) {
+  const navigate = useNavigate()
   const apoliceForm = useForm<ApoliceFormData>({
     resolver: zodResolver(apoliceFormSchema),
     defaultValues: {
@@ -74,7 +76,7 @@ export default function Form({ apolice, handleSave }: FormProps) {
         <h2 className="text-brand-400 font-exo italic text-xl mb-6">
           Dados da apólice
         </h2>
-        <div className="grid gap-6 mb-6 md:grid-cols-2 px-6">
+        <div className="grid gap-6 mb-6 md:grid-cols-2 px-2 md:px-6">
           <Input
             label="Número"
             id="apoliceNumber"
@@ -96,7 +98,7 @@ export default function Form({ apolice, handleSave }: FormProps) {
         <h2 className="text-brand-400 font-exo italic text-xl mb-6">
           Dados do segurado
         </h2>
-        <div className="mb-6 px-6">
+        <div className="mb-6 px-2 md:px-6">
           <Input
             label="Nome"
             id="name"
@@ -106,7 +108,7 @@ export default function Form({ apolice, handleSave }: FormProps) {
             error={errors.name?.message}
           />
         </div>
-        <div className="grid gap-6 mb-6 md:grid-cols-2 px-6">
+        <div className="grid gap-6 mb-6 md:grid-cols-2 px-2 md:px-6">
           <Input
             label="E-mail"
             id="email"
@@ -127,9 +129,18 @@ export default function Form({ apolice, handleSave }: FormProps) {
         </div>
       </FormProvider>
 
-      <Button type="submit" className="w-1/2 mt-12">
-        Salvar
-      </Button>
+      <div className="flex gap-2 w-full justify-end md:pr-6">
+        <Button type="submit" className="md:w-auto w-full">
+          Salvar
+        </Button>
+        <Button
+          variant="danger"
+          className="w-full md:w-auto"
+          onClick={() => navigate('/')}
+        >
+          Cancelar
+        </Button>
+      </div>
     </form>
   )
 }

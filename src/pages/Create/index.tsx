@@ -17,13 +17,13 @@ export function CreateApolice() {
   return (
     <>
       {
-        <div className="container mx-auto px-0 md:px-6">
+        <div className="container mx-auto px-6">
           <div className="py-10">
             <h2 className="text-4xl font-exo font-bold text-brand-500 italic inline mr-6">
               Crie uma nova apólice
             </h2>
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <Form handleSave={handleCreate} />
           </div>
         </div>
