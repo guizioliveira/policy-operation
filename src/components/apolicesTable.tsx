@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { ApoliceProps } from '../server/api'
 import { Button } from './button'
 import { Edit3, Trash2 } from 'lucide-react'
@@ -16,22 +15,23 @@ export function ApolicesTable({
   apolices,
 }: ApolicesTableProps) {
   return (
-    <Suspense fallback={'Loading'}>
-      <table className="w-full border-collapse md:min-w-[600px] mt-6 overflow-x-scroll">
-        <thead>
-          <tr className="text-zinc-600 font-exo leading-relaxed italic">
-            <th className="bg-zinc-50 p-4 text-left rounded-tl-lg pl-6">
-              Número
-            </th>
-            <th className="bg-zinc-50 p-4 text-left">Segurado</th>
-            <th className="bg-zinc-50 p-4 text-left">Prêmio</th>
-            <th className="bg-zinc-50 p-4 text-left">Coberturas</th>
-            <th className="bg-zinc-50 p-4 text-left rounded-tr-lg pr-6" />
-          </tr>
-        </thead>
+    <table className="w-full border-collapse md:min-w-[600px] mt-6 overflow-x-scroll">
+      <thead>
+        <tr className="text-zinc-600 font-exo leading-relaxed italic">
+          <th className="bg-zinc-50 p-4 text-left rounded-tl-lg pl-6">
+            Número
+          </th>
+          <th className="bg-zinc-50 p-4 text-left">Segurado</th>
+          <th className="bg-zinc-50 p-4 text-left">Prêmio</th>
+          <th className="bg-zinc-50 p-4 text-left">Coberturas</th>
+          <th className="bg-zinc-50 p-4 text-left rounded-tr-lg pr-6" />
+        </tr>
+      </thead>
 
-        <tbody>
-          {apolices.map((apolice) => (
+      <tbody>
+        {apolices
+          .sort((a, b) => b.id - a.id)
+          .map((apolice) => (
             <tr key={apolice.id}>
               <td className="bg-zinc-100 font-bold border-t-2 border-white p-4 leading-relaxed w-1/12 pl-6">
                 {apolice.numero}
@@ -74,8 +74,7 @@ export function ApolicesTable({
               </td>
             </tr>
           ))}
-        </tbody>
-      </table>
-    </Suspense>
+      </tbody>
+    </table>
   )
 }
