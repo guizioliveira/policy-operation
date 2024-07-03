@@ -2,12 +2,13 @@
 Este projeto foi parte de um desafio técnico que tinha como objetivo criar uma plataforma de gerenciamento de apólices. Dando a oportunidade dos usuários visualizarem, editarem e crirem novos registros de apólice.
 
 Para a construção do projeto, foram utilizados:
-- ReactJS + Vite;
-- TailwindCSS
-- Rotas dinâmicas orquestradas pelo React Router Dom;
-- Validação de campos do formulário com Zod;
-- Gerenciamento dos estados do formulário com React Hook Forms;
-- Mock de chamadas a endpoints utilizando MirageJS.
+- ReactJS + Vite + Typescript;
+- [TailwindCSS](https://tailwindcss.com/);
+- Criação de componentes reutilizaveis com o sistema de variante [Tailwind Variants](https://www.tailwind-variants.org/);
+- Rotas dinâmicas orquestradas pelo [React Router Dom](https://reactrouter.com/en/main);
+- Validação de campos do formulário com [Zod](https://reactrouter.com/en/main);
+- Gerenciamento dos estados do formulário com [React Hook Forms](https://www.react-hook-form.com/);
+- Mock de chamadas a endpoints utilizando [MirageJS](https://miragejs.com/).
 
 ## Requisitos
 
